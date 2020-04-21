@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lpcGame.html</title>
+    <script>
+        function lpcGame(){
+
+        }
+
+        function userImgChange(){
+            var userImg = document.getElementsByName("button1");
+
+            for(var i=0; i<userImg.length; i++){
+                
+                if(userImg[i].value=="가위"){
+                    
+                    userImg.src = "./images/"+ scissors +".jpg";
+                    }
+        
+                }
+              
+            }
+        
+
+
+
+        
+        
+    </script>
+</head>
+<body>
+    <h2>가위바위보게임</h2>
+
+    <table border="2" >
+        <tr>
+            <td>컴퓨터</td>
+            <td>나</td>
+        </tr>
+        <tr>
+            <td name ="computer">컴퓨터그림</td>
+            <td name ="user">유저그림</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="here">결과는 여기에</td>
+        </tr>
+        
+    </table>
+        <div>
+            <input type="button" name = "button1" value="가위" onclick="userImgChange();"/>
+            <input type="button" name = "button1" value="바위" onclick="userImgChange();"/>
+            <input type="button" name = "button1" value="보" onclick="userImgChange();"/>
+        </div>
+
+      
+</body>
+</html>

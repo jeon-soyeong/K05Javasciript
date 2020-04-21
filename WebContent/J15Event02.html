@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J15Event02.html</title>
+        <script>
+            /*
+            이벤트활용2 : window객체에 이벤트리스너를 부착한다.
+            */
+            
+            window.onload = function() {
+                alert("문서의 load가 완료되었습니다.");
+                var t = document.getElementById("title").innerHTML;
+                alert(t);
+            }
+        </script>
+</head>
+<body>
+    <h2 id="title">이벤트 - load(2)</h2>
+
+    <script>
+        alert("문서가 끝나기 직전");
+    </script>
+</body>
+</html>
