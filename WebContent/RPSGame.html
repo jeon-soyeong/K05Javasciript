@@ -1,58 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lpcGame.html</title>
-    <script>
-        function lpcGame(){
-
-        }
-
-        function userImgChange(){
-            var userImg = document.getElementsByName("button1");
-
-            for(var i=0; i<userImg.length; i++){
-                
-                if(userImg[i].value=="가위"){
-                    
-                    userImg.src = "./images/"+ scissors +".jpg";
-                    }
-        
-                }
-              
-            }
-        
-
-
-
-        
-        
-    </script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>lpcGame.html</title>
+   <script>  
+ 
+       function gameStart(userImgNum){
+                                          
+           var comImgNum = parseInt(Math.random()*3) + 1;
+          
+           switch(userImgNum){
+               case 1 :
+                   var userImg = document.getElementById("userImg");
+                   userImg.src = "./images/scissors.jpg";
+                   break;
+               case 2 :
+                   var userImg = document.getElementById("userImg");
+                   userImg.src = "./images/rock.jpg";
+                   break;
+               case 3 :
+                   var userImg = document.getElementById("userImg");
+                   userImg.src = "./images/paper.jpg";
+                   break;
+           }
+           switch(comImgNum){
+               case 1 :
+                   var comImg = document.getElementById("computerImg");
+                   comImg.src = "./images/scissors.jpg";
+                   break;
+               case 2 :
+                   var comImg = document.getElementById("computerImg");
+                   comImg.src = "./images/rock.jpg";
+                   break;
+               case 3 :
+                   var comImg = document.getElementById("computerImg");
+                   comImg.src = "./images/paper.jpg";
+                   break;
+           }
+ 
+           switch(userImgNum - comImgNum) {
+               case 0:
+                   document.getElementById("here").innerHTML = "비겼습니다";
+                   console.log("비겼습니다");
+                   break;
+               case 1: case -2:
+                   document.getElementById("here").innerHTML = "이겼습니다";
+                   console.log("이겼습니다");
+                   break;
+               case -1: case 2:
+                   document.getElementById("here").innerHTML = "졌습니다";
+                   console.log("졌습니다");
+                   break;
+               }
+           }          
+   </script>
 </head>
 <body>
-    <h2>가위바위보게임</h2>
-
-    <table border="2" >
-        <tr>
-            <td>컴퓨터</td>
-            <td>나</td>
-        </tr>
-        <tr>
-            <td name ="computer">컴퓨터그림</td>
-            <td name ="user">유저그림</td>
-        </tr>
-        <tr>
-            <td colspan="2" id="here">결과는 여기에</td>
-        </tr>
-        
-    </table>
-        <div>
-            <input type="button" name = "button1" value="가위" onclick="userImgChange();"/>
-            <input type="button" name = "button1" value="바위" onclick="userImgChange();"/>
-            <input type="button" name = "button1" value="보" onclick="userImgChange();"/>
-        </div>
-
+   <h2>가위바위보게임</h2>
+ 
+   <table border="2" >
+       <tr>
+           <td>컴퓨터</td>
+           <td>나</td>
+       </tr>
+       <tr>
+           <td id ="computer"> <img id ="computerImg" src="./images/start.png"/> </td>
+           <td id ="user"> <img id ="userImg" src="./images/start.png"/> </td>
+       </tr>
+       <tr>
+           <td colspan="2" id="here" style="font-size: 2em; color: red;">결과는 여기에</td>
+       </tr>
       
+   </table>
+       <div>
+           <input type="button" value="가위" onclick="gameStart(1);"/>
+           <input type="button" value="바위" onclick="gameStart(2);"/>
+           <input type="button" value="보" onclick="gameStart(3);"/> 
+       </div>
 </body>
 </html>
+

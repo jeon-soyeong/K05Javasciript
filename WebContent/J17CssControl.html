@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+    <script>
+        var pTag, pSize;
+
+        window.onload = function(){
+            pTag = document.getElementById("article");
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag){
+
+            switch(flag){
+                case "+":
+                    pSize +=10;
+                    pTag.style.fontSize = pSize+"px";
+                    break;
+                case "-":
+                    pSize -=10;
+                    pTag.style.fontSize = pSize+"px";
+                    break;
+                case "R":
+                    pTag.style.color = "red";
+                    break;
+                case "G":
+                    pTag.style.color = "green";
+                    break;
+                case "B":
+                    pTag.style.color = "blue";
+                    break;
+                case "Bo":
+                    pTag.style.fontWeight = "bold";
+                    break;
+                case "No":
+                    pTag.style.fontWeight = "normal";
+                    break;
+                case "Ce":
+                    pTag.style.textAlign = "center";
+                    break;
+                case "Le":
+                    pTag.style.textAlign = "left";
+                    break;
+                default:
+                    pTag.style.color = "black";  
+            }
+        }
+       
+        /*
+            문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+            폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+            글꼴 : Verdana, 굴림체, 휴먼옛체, 궁서, Impact
+        */
+            var fontToggle = 0;//폰트토글을 위한 전역변수
+            function setFont(){
+                //문제에서 주어진 폰트를 배열로 선언
+                var fontArray = ['Verdana', '굴림체', '휴먼옛체', '궁서', 'Impact'];
+                //정수를 5로 나누면 나머지는 0~4까지 생성
+                var fontIndex = fontToggle % 5;
+                //위에서 구한 수를 인덱스로 폰트 설정
+                pTag.style.fontFamily = fontArray[fontIndex];
+                //함수를 호출할 때마다 1증가
+                fontToggle++;
+            }
+
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();">
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+    </fieldset>
+    <p style="font-size: 12px;" id="article">
+        오늘의 뉴스<br/>
+        서울=뉴스1) 박병진 기자 = 신종 코로나바이러스 감염증(코로나19) 사태가 지속되고 있는 가운데 테워드로스 아드하놈 거브러여수스 세계보건기구(WHO) 사무총장의 의미심장한 발언이 주목받고 있다. WHO에 대한 자금 지원을 중단하겠다는 도널드 트럼프 미국 대통령을 겨냥한 것이 아니냐는 해석이 나온다.<br/>
+        <br/><br/>
+        22일 테워드로스 총장은 자신의 트위터에 "정직"(Honesty)이라는 짧고 굵은 한마디를 올렸다. 누구를 가리키는 말인지 구체적으로 적시하진 않았다. 그러나 이때 백악관에서 코로나19 관련 브리핑이 진행 중이었다는 점에서 최근 테워드로스 총장과 마찰을 빚은 트럼프 대통령을 가리킨 것으로 보인다.<br/>
+        <br/><br/>
+        트럼프 대통령은 이날도 코로나19 대응을 자화자찬하면서 사실관계가 잘못된 주장을 펼쳤다.<br/>
+    </p>
+</body>
+</html>
